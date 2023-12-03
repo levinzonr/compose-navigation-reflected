@@ -1,17 +1,17 @@
+import com.vanniktech.maven.publish.GradlePublishPlugin
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     kotlin("jvm")
     kotlin("kapt")
     id("java-gradle-plugin")
-    `maven-publish`
+    alias(libs.plugins.maven.publish)
 }
-
-group = "com.levinzonr.navigation.reflected"
-version = "1.0.0"
 
 gradlePlugin {
     plugins {
         create("simplePlugin") {
-            id = "${group}.plugin"
+            id = "com.levinzonr.reflected"
             implementationClass = "NavigationReflectedPlugin"
         }
     }
@@ -25,3 +25,9 @@ dependencies {
     kapt(libs.google.autoservice)
 }
 
+
+mavenPublishing {
+    pomFromGradleProperties()
+    publishToMavenCentral(SonatypeHost.S01)
+    configure(GradlePublishPlugin())
+}

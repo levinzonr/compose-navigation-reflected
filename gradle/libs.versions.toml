@@ -17,6 +17,7 @@ org-jetbrains-kotlin-jvm = "1.9.10"
 accompanist = "0.32.0"
 ksp = "1.9.10-1.0.13"
 hilt = "2.48.1"
+publish = "0.25.3"
 
 
 [libraries]
@@ -66,6 +67,7 @@ org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 google-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 spotless = { id = "com.diffplug.spotless", version = "6.23.2" }
+maven_publish = { id = "com.vanniktech.maven.publish.base", version.ref = "publish"}
 
 [bundles]
 android-compose = [

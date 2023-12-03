@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    id("com.levinzonr.navigation.reflected.plugin") version "1.0.0"
+    id("com.levinzonr.reflected") version "0.0.1-SNAPSHOT"
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.google.hilt)
 }
@@ -56,6 +56,7 @@ android {
 
 
 dependencies {
+    implementation("com.levinzonr.reflected:navigation:0.0.1-SNAPSHOT")
     implementation(project(":reflected-navigation"))
     implementation(project(":reflected-navigation-material"))
     implementation(libs.google.accompanist.navigation.material)

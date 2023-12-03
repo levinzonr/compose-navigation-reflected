@@ -1,24 +1,11 @@
+import com.vanniktech.maven.publish.KotlinJvm
+import com.vanniktech.maven.publish.SonatypeHost
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     kotlin("kapt")
     alias(libs.plugins.org.jetbrains.kotlin.jvm)
-    `maven-publish`
-}
-
-group = "com.levinzonr.navigation.reflected"
-version = "1.0.0"
-
-publishing {
-    publications {
-        create<MavenPublication>("default") {
-            from(components["java"])
-            pom {
-                name.set("compiler-plugin")
-                description.set("Compiler Plugin")
-
-            }
-        }
-    }
+    alias(libs.plugins.maven.publish)
 }
 
 dependencies {
@@ -27,4 +14,10 @@ dependencies {
     compileOnly(libs.google.autoservice)
     kapt(libs.google.autoservice)
 
+}
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.S01)
+    pomFromGradleProperties()
+    configure(KotlinJvm())
 }

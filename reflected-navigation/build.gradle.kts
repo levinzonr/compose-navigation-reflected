@@ -1,8 +1,11 @@
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+import com.vanniktech.maven.publish.SonatypeHost
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-
+    alias(libs.plugins.maven.publish)
 }
 
 kotlin {
@@ -45,4 +48,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.android.test.ext.junit)
     androidTestImplementation(libs.android.espresso.core)
+}
+
+mavenPublishing {
+    pomFromGradleProperties()
+    publishToMavenCentral(SonatypeHost.S01)
+    configure(AndroidSingleVariantLibrary("release"))
+
 }
