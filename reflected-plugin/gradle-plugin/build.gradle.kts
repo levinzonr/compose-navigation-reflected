@@ -1,4 +1,6 @@
+import com.vanniktech.maven.publish.GradlePlugin
 import com.vanniktech.maven.publish.GradlePublishPlugin
+import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
@@ -29,5 +31,6 @@ dependencies {
 mavenPublishing {
     pomFromGradleProperties()
     publishToMavenCentral(SonatypeHost.S01)
-    configure(GradlePublishPlugin())
+    configure(GradlePlugin(javadocJar = JavadocJar.Empty()))
+    signAllPublications()
 }

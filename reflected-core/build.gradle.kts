@@ -19,4 +19,5 @@ mavenPublishing {
     pomFromGradleProperties()
     publishToMavenCentral(SonatypeHost.S01)
     configure(KotlinJvm())
+    signAllPublications()
 }

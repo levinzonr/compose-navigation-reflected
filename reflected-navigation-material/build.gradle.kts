@@ -57,5 +57,5 @@ mavenPublishing {
     pomFromGradleProperties()
     publishToMavenCentral(SonatypeHost.S01)
     configure(AndroidSingleVariantLibrary("release"))
-
+    signAllPublications()
 }
